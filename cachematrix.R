@@ -7,17 +7,18 @@
 ## function and uses the object's function. The output of this function
 ## is a list that contains these functions.
 makeCacheMatrix <- function(x = matrix()) {
-  inverse <- NULL
-  set <- function(y) {
-    x <<- y
-    inverse <<- NULL
+  
+   inverse <- NULL
+   set <- function(y) {
+         x <<- y
+         inverse <<- NULL
   }
   get <- function() x
   setinverse <- function(Inverse) inverse <<- Inverse
   getinverse <- function() inverse
   list(set = set, get = get,
-       setinverse = setinverse,
-       getinverse = getinverse)
+          setinverse = setinverse,
+          getinverse = getinverse)
 }
 
 
@@ -26,12 +27,14 @@ makeCacheMatrix <- function(x = matrix()) {
 ## which is the special list that contains the matrix object's
 ## functions. The output of this function will be the inverted 
 ## matrix.
+
 cacheSolve <- function(x, ...) {
+  
   ## Return a matrix that is the inverse of 'x'
   m <- x$getinverse()
-  if(!is.null(m)) {
-    message("getting cached inverted matrix")
-    return(m)
+       if(!is.null(m)) {
+            message("getting cached inverted matrix")
+            return(m)
   }
   matrix <- x$get()
   m <- solve(matrix, ...)
